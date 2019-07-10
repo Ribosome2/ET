@@ -53,9 +53,28 @@ namespace ETHotfix
 					this.TestActor().Coroutine();
 				}
             }
+
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+	            CastQSkill();
+            }
         }
 
-	    public async ETVoid TestActor()
+        private static void CastQSkill()
+        {
+	        var  myPlayer = ETModel.Game.Scene.GetComponent<PlayerComponent>().MyPlayer;
+	        var playerUnit = ETModel.Game.Scene.GetComponent<UnitComponent>().Get(myPlayer.UnitId);
+	        var pos =playerUnit.Position;
+	        var rot = playerUnit.Rotation;
+	        UnityEngine.GameObject go = UnityEngine.GameObject.CreatePrimitive(PrimitiveType.Cube);
+			go.transform.SetPositionAndRotation(pos,rot);
+			UnityEngine.GameObject.Destroy(go,3);
+
+
+        }
+
+        public async ETVoid TestActor()
 	    {
 		    try
 		    {
