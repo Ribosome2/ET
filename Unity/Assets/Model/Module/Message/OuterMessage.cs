@@ -1370,6 +1370,74 @@ namespace ETModel {
 
   }
 
+  public partial class Frame_WaveAttack : pb::IMessage {
+    private static readonly pb::MessageParser<Frame_WaveAttack> _parser = new pb::MessageParser<Frame_WaveAttack>(() => (Frame_WaveAttack)MessagePool.Instance.Fetch(typeof(Frame_WaveAttack)));
+    public static pb::MessageParser<Frame_WaveAttack> Parser { get { return _parser; } }
+
+    private long actorId_;
+    public long ActorId {
+      get { return actorId_; }
+      set {
+        actorId_ = value;
+      }
+    }
+
+    private int yAngle_;
+    /// <summary>
+    ///代表方向的 y角度
+    /// </summary>
+    public int YAngle {
+      get { return yAngle_; }
+      set {
+        yAngle_ = value;
+      }
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (YAngle != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(YAngle);
+      }
+      if (ActorId != 0L) {
+        output.WriteRawTag(232, 5);
+        output.WriteInt64(ActorId);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (ActorId != 0L) {
+        size += 2 + pb::CodedOutputStream.ComputeInt64Size(ActorId);
+      }
+      if (YAngle != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(YAngle);
+      }
+      return size;
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      yAngle_ = 0;
+      actorId_ = 0;
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 8: {
+            YAngle = input.ReadInt32();
+            break;
+          }
+          case 744: {
+            ActorId = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   #endregion
 
 }

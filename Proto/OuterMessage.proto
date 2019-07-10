@@ -119,16 +119,12 @@ message M2C_Reload // IResponse
 	string Message = 92;
 }
 
-message C2M_WaveAttack // IRequest
+message Frame_WaveAttack //IActorMessage
 {
-	int32 RpcId = 90;
-	int32 yAngle=91;  //代表方向的 y角度
-	
+	int64 ActorId = 93;
+	int32 yAngle=1;  //代表方向的 y角度
 }
 
-message M2C_WaveAttack // IResponse
-{
-	int32 RpcId = 90;
-	int32 Error = 91;
-	int32 yAngle=92;  //代表方向的 y角度
-}
+
+
+

@@ -48,6 +48,9 @@ namespace ETModel
 	[Message(OuterOpcode.M2C_Reload)]
 	public partial class M2C_Reload : IResponse {}
 
+	[Message(OuterOpcode.Frame_WaveAttack)]
+	public partial class Frame_WaveAttack : IActorMessage {}
+
 }
 namespace ETModel
 {
@@ -68,5 +71,6 @@ namespace ETModel
 		 public const ushort G2C_Test = 113;
 		 public const ushort C2M_Reload = 114;
 		 public const ushort M2C_Reload = 115;
+		 public const ushort Frame_WaveAttack = 116;
 	}
 }

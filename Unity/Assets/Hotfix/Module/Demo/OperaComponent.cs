@@ -72,6 +72,10 @@ namespace ETHotfix
 			UnityEngine.GameObject.Destroy(go,3);
 
 
+			Frame_WaveAttack attack=new Frame_WaveAttack();
+			attack.ActorId = myPlayer.UnitId;
+			attack.YAngle = (int)playerUnit.Rotation.y;
+			ETModel.SessionComponent.Instance.Session.Send(attack);
         }
 
         public async ETVoid TestActor()

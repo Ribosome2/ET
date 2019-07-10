@@ -243,6 +243,11 @@ namespace ETModel
 
 		public void Send(IMessage message)
 		{
+			if (this.Network == null)
+			{
+				throw new Exception("NetWorkComponent 不知为啥空了");
+				return;
+			}
 			OpcodeTypeComponent opcodeTypeComponent = this.Network.Entity.GetComponent<OpcodeTypeComponent>();
 			ushort opcode = opcodeTypeComponent.GetOpcode(message.GetType());
 			
